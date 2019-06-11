@@ -6,8 +6,8 @@ module load genometools
 module load hmmer
 
 #use LTRHarvest to find transposons in the scaffold
-gt suffixerator -db $1.fasta.gz -indexname $1.fsa -tis -suf -lcp -des -ssp -sds -dna
+gt suffixerator -db $1.fasta.gz -indexname $1.fsa -v -tis -suf -lcp -des -ssp -sds -dna
 gt ltrharvest -index $1.fsa -v -out pred-$1.fsa -outinner pred-inner-$1.fsa -gff3 pred-$1.gff3
 
 #Use LTR digest to annotate them
-gt ltrdigest -force -hmms ~/shared/GyDB_collection/profiles/*.hmm -o anno_$1.gff3  pred-$1.gff3 $1.fsa
+gt ltrdigest -force -hmms ~/Nobt_Annotation_Link/ltr/gydb_hmms/GyDB_collection/profiles/*.hmm -o anno_$1.gff3  pred-$1.gff3 $1.fsa
